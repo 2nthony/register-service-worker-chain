@@ -15,12 +15,29 @@ const isLocalhost = () => Boolean(
     )
 )
 
-export function register (swUrl, hooks) {
-  const emit = (hook, ...args) => {
-    if (hooks && hooks[hook]) {
-      hooks[hook](...args)
+export function register (swUrl) {
+  const _fn = {}
+  const hooks = [
+    'ready',
+    'registered',
+    'cached',
+    'updatefound',
+    'updated',
+    'offline',
+    'error'
+  ]
+
+  const chain = {}
+  hooks.forEach(hook => {
+    chain[hook] = fn => {
+      _fn[hook] = fn
+      return chain
     }
-  }
+  })
+
+  const emit = (hook, ...args) => setTimeout(() => {
+    if (_fn[hook]) _fn[hook](...args)
+  })
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
@@ -36,6 +53,7 @@ export function register (swUrl, hooks) {
       }
     })
   }
+  return chain
 }
 
 function registerValidSW (swUrl, emit) {

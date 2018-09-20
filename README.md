@@ -1,4 +1,6 @@
-# register-service-worker
+> This project fork from [register-service-worker](https://github.com/yyx990803/register-service-worker)  
+
+# register-service-worker-chain
 
 A script to simplify service worker registration with hooks for common events.
 
@@ -7,31 +9,30 @@ A script to simplify service worker registration with hooks for common events.
 **Note:** this script uses ES modules export and is expected to be used with a client side bundler that can handle ES modules syntax.
 
 ``` js
-import { register } from 'register-service-worker'
+import { register } from 'register-service-worker-chain'
 
-register('/service-worker.js', {
-  ready (registration) {
+register('/service-worker.js')
+  .ready(registration => {
     console.log('Service worker is active.')
-  },
-  registered (registration) {
+  })
+  .registered(registration => {
     console.log('Service worker has been registered.')
-  },
-  cached (registration) {
+  })
+  .cached(registration => {
     console.log('Content has been cached for offline use.')
-  },
-  updatefound (registration) {
+  })
+  .updatefound(registration => {
     console.log('New content is downloading.')
-  },
-  updated (registration) {
+  })
+  .updated(registration => {
     console.log('New content is available; please refresh.')
-  },
-  offline () {
+  })
+  .offline(() => {
     console.log('No internet connection found. App is running in offline mode.')
-  },
-  error (error) {
+  })
+  .error(error => {
     console.error('Error during service worker registration:', error)
-  }
-})
+  )
 ```
 
 The `ready`, `registered`, `cached`, `updatefound` and `updated` events passes a [ServiceWorkerRegistration](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration) instance in their arguments.
