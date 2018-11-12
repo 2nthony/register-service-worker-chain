@@ -1,6 +1,10 @@
-> This project fork from [register-service-worker](https://github.com/yyx990803/register-service-worker)  
+> This project fork from [register-service-worker](https://github.com/yyx990803/register-service-worker)
 
 # register-service-worker-chain
+
+![NPM version](https://badgen.net/npm/v/register-service-worker-chain)
+![NPM downloads](https://badgen.net/npm/dm/register-service-worker-chain)
+![License](https://badgen.net/npm/license/register-service-worker-chain)
 
 A script to simplify service worker registration with hooks for common events.
 
