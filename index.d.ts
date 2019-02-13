@@ -1,13 +1,15 @@
 export type Hooks = {
-  ready?: (registration: any) => void;
-  registered?: (registration: any) => void;
-  cached?: (registration: any) => void;
-  updated?: (registration: any) => void;
-  updatefound?: (registration: any) => void;
-  offline?: () => void;
-  error?: (error: Error) => void;
+  ready?: (registration: any) => Hooks;
+  registered?: (registration: any) => Hooks;
+  cached?: (registration: any) => Hooks;
+  updated?: (registration: any) => Hooks;
+  updatefound?: (registration: any) => Hooks;
+  offline?: () => Hooks;
+  error?: (error: Error) => Hooks;
 };
 
-export function register(swUrl: string, hooks: Hooks): void;
+export type RegisterationOptions = object
+
+export function register(swUrl: string, registerationOptions: RegisterationOptions): Hooks;
 
 export function unregister(): void;
