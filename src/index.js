@@ -15,7 +15,7 @@ const isLocalhost = () => Boolean(
     )
 )
 
-export function register (swUrl) {
+export function register (swUrl, registerationOptions = { scope = '/' }) {
   const _fn = {}
   const hooks = [
     'ready',
@@ -43,22 +43,23 @@ export function register (swUrl) {
     window.addEventListener('load', () => {
       if (isLocalhost()) {
         // This is running on localhost. Lets check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl, emit)
+        checkValidServiceWorker(swUrl, emit, registerationOptions)
         navigator.serviceWorker.ready.then(registration => {
           emit('ready', registration)
         })
       } else {
         // Is not local host. Just register service worker
-        registerValidSW(swUrl, emit)
+        registerValidSW(swUrl, emit, registerationOptions)
       }
     })
   }
+
   return chain
 }
 
-function registerValidSW (swUrl, emit) {
+function registerValidSW (swUrl, emit, registerationOptions) {
   navigator.serviceWorker
-    .register(swUrl)
+    .register(swUrl, registerationOptions)
     .then(registration => {
       emit('registered', registration)
       if (registration.waiting) {
@@ -91,7 +92,7 @@ function registerValidSW (swUrl, emit) {
     })
 }
 
-function checkValidServiceWorker (swUrl, emit) {
+function checkValidServiceWorker (swUrl, emit, registerationOptions) {
   // Check if the service worker can be found.
   fetch(swUrl)
     .then(response => {
@@ -105,7 +106,7 @@ function checkValidServiceWorker (swUrl, emit) {
         unregister()
       } else {
         // Service worker found. Proceed as normal.
-        registerValidSW(swUrl, emit)
+        registerValidSW(swUrl, emit, registerationOptions)
       }
     })
     .catch(error => {
