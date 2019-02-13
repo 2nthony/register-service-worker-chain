@@ -2,7 +2,7 @@
   "name": "register-service-worker-chain",
   "sideEffects": false,
   "version": "1.0.0",
-  "description": "Script for registering service worker, with hooks",
+  "description": "Script for registering service worker, with chain hooks",
   "main": "index.js",
   "scripts": {
     "build": "node scripts/build.js",
