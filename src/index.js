@@ -15,7 +15,7 @@ const isLocalhost = () => Boolean(
     )
 )
 
-export function register (swUrl, registerationOptions = { scope = '/' }) {
+export function register (swUrl, registerationOptions = { scope: '/' }) {
   const _fn = {}
   const hooks = [
     'ready',
