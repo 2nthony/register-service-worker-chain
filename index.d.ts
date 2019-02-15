@@ -1,4 +1,4 @@
-export type Hooks = {
+type Hooks = {
   ready?: (registration: any) => Hooks;
   registered?: (registration: any) => Hooks;
   cached?: (registration: any) => Hooks;
@@ -8,7 +8,7 @@ export type Hooks = {
   error?: (error: Error) => Hooks;
 };
 
-export type RegisterationOptions = object
+type RegisterationOptions = object
 
 export function register(swUrl: string, registerationOptions: RegisterationOptions): Hooks;
 
