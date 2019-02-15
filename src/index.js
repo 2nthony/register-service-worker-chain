@@ -15,7 +15,7 @@ const isLocalhost = () => Boolean(
     )
 )
 
-export function register (swUrl, registerationOptions = { scope: '/' }) {
+export function register (swUrl, registrationOptions = { scope: '/' }) {
   const _fn = {}
   const hooks = [
     'ready',
@@ -43,13 +43,13 @@ export function register (swUrl, registerationOptions = { scope: '/' }) {
     window.addEventListener('load', () => {
       if (isLocalhost()) {
         // This is running on localhost. Lets check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl, emit, registerationOptions)
+        checkValidServiceWorker(swUrl, emit, registrationOptions)
         navigator.serviceWorker.ready.then(registration => {
           emit('ready', registration)
         })
       } else {
         // Is not local host. Just register service worker
-        registerValidSW(swUrl, emit, registerationOptions)
+        registerValidSW(swUrl, emit, registrationOptions)
       }
     })
   }
@@ -57,9 +57,9 @@ export function register (swUrl, registerationOptions = { scope: '/' }) {
   return chain
 }
 
-function registerValidSW (swUrl, emit, registerationOptions) {
+function registerValidSW (swUrl, emit, registrationOptions) {
   navigator.serviceWorker
-    .register(swUrl, registerationOptions)
+    .register(swUrl, registrationOptions)
     .then(registration => {
       emit('registered', registration)
       if (registration.waiting) {
@@ -92,7 +92,7 @@ function registerValidSW (swUrl, emit, registerationOptions) {
     })
 }
 
-function checkValidServiceWorker (swUrl, emit, registerationOptions) {
+function checkValidServiceWorker (swUrl, emit, registrationOptions) {
   // Check if the service worker can be found.
   fetch(swUrl)
     .then(response => {
@@ -106,7 +106,7 @@ function checkValidServiceWorker (swUrl, emit, registerationOptions) {
         unregister()
       } else {
         // Service worker found. Proceed as normal.
-        registerValidSW(swUrl, emit, registerationOptions)
+        registerValidSW(swUrl, emit, registrationOptions)
       }
     })
     .catch(error => {
