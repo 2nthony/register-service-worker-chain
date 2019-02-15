@@ -8,6 +8,6 @@ type Hooks = {
   error?: (error: Error) => Hooks;
 };
 
-export function register(swUrl: string, registrationOptions: object): Hooks;
+export function register(swUrl: string, registrationOptions: ServiceWorkerRegistration): Hooks;
 
 export function unregister(): void;
