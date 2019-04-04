@@ -45,7 +45,7 @@ register('/service-worker.js', {
 
 ### register(swUrl, registrationOptions)
 
-- Type: `(swUrl: string, registrationOptions?: ServiceWorkerRegistration) => Hooks`
+- `(swUrl: string, registrationOptions?: ServiceWorkerRegistration) => Hooks`
 
 ``` ts
 type Hooks = {
