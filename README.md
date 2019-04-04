@@ -43,7 +43,7 @@ register('/service-worker.js', {
 
 ## API
 
-### register(url, registrationOptions)
+### register(swUrl, registrationOptions)
 
 - Type: `(swUrl: string, registrationOptions: ServiceWorkerRegistration) => Hooks`
 
