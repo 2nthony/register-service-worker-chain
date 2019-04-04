@@ -41,4 +41,24 @@ register('/service-worker.js', {
   )
 ```
 
+## API
+
+### register(url, registrationOptions)
+
+- Type: `(swUrl: string, registrationOptions: ServiceWorkerRegistration) => Hooks`
+
+``` ts
+type Hooks = {
+  ready?: (registration: any) => Hooks;
+  registered?: (registration: any) => Hooks;
+  cached?: (registration: any) => Hooks;
+  updated?: (registration: any) => Hooks;
+  updatefound?: (registration: any) => Hooks;
+  offline?: () => Hooks;
+  error?: (error: Error) => Hooks;
+};
+```
+
 The `ready`, `registered`, `cached`, `updatefound` and `updated` events passes a [ServiceWorkerRegistration](https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration) instance in their arguments.
+
+The `registrationOptions` object will be passed as the second argument to [`ServiceWorkerContainer.register`](https://developer.mozilla.org/de/docs/Web/API/ServiceWorkerContainer/register#Parameter)
